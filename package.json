@@ -1,0 +1,24 @@
+{
+    "name": "catch-this",
+    "version": "v0.1",
+    "description": "Catch this, but do not throw it",
+    "main": "index.js",
+    "scripts": {
+        "test": "vitest",
+        "test:ci": "vitest run"
+    },
+    "keywords": [],
+    "files": [
+        "index.js"
+    ],
+    "author": "darckfast",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/darckfast/catch-this.git"
+    },
+    "license": "MIT",
+    "packageManager": "pnpm@10.14.0",
+    "devDependencies": {
+        "vitest": "^3.2.4"
+    }
+}
