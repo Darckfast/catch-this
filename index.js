@@ -1,3 +1,15 @@
+function normalizeError(err) {
+    if (!(err instanceof Error)) {
+        if (err instanceof Object) {
+            err = JSON.stringify(err)
+        }
+
+        err = new Error(err || 'no error message')
+    }
+
+    return err
+}
+
 class catchThis {
     static auto(fn) {
         if (typeof fn === 'object' && typeof fn.then === 'function') {
@@ -13,12 +25,7 @@ class catchThis {
             return { data, error: undefined };
         }
         catch (err) {
-            if (!(err instanceof Error)) {
-                err = new Error(err || 'no error message')
-            }
-
-
-            return { data: undefined, error: err };
+            return { data: undefined, error: normalizeError(err) };
         }
     }
 
@@ -29,10 +36,13 @@ class catchThis {
         }
         catch (err) {
             if (!(err instanceof Error)) {
+                if (err instanceof Object) {
+                    err = JSON.stringify(err)
+                }
                 err = new Error(err || 'no error message')
             }
 
-            return { data: undefined, error: err };
+            return { data: undefined, error: normalizeError(err) };
         }
     }
 }

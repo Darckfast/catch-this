@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { catchThis } from './index'
 
 describe('catchThis', () => {
@@ -52,7 +52,22 @@ describe('catchThis', () => {
         let { data, error } = await result
 
         expect(data).toBeUndefined
-        expect(error).toHaveProperty('message', '[object Object]')
+        expect(error).toHaveProperty('message', '{}')
+    })
+
+
+    test('[error]: it should detect promise', async () => {
+        let result = catchThis.auto(new Promise(() => {
+            throw { err: 'some error message' }
+        }))
+
+        expect(typeof result).toBe('object')
+        expect(typeof result.then).toBe('function')
+
+        let { data, error } = await result
+
+        expect(data).toBeUndefined
+        expect(error).toHaveProperty('message', `{"err":"some error message"}`)
     })
     test('[error]: it should return no error message', async () => {
         let result = catchThis.auto(new Promise(() => {
