@@ -1,3 +1,15 @@
+function normalizeError(err) {
+    if (!(err instanceof Error)) {
+        if (err instanceof Object) {
+            err = JSON.stringify(err)
+        }
+
+        err = new Error(err || 'no error message')
+    }
+
+    return err
+}
+
 class catchThis {
     static auto(fn) {
         if (typeof fn === 'object' && typeof fn.then === 'function') {
@@ -7,39 +19,21 @@ class catchThis {
         return catchThis.sync(fn)
     }
 
-    static async async(promise) {
+    static async async(fn) {
         try {
-            const data = await promise;
+            const data = await fn;
             return { data, error: undefined };
-        }
-        catch (error) {
-            if (typeof error === 'string') {
-                error = { message: error }
-            }
-
-            if (!error || !error.message) {
-                error = { message: 'no error message' }
-            }
-
-            return { data: undefined, error: error };
+        } catch (err) {
+            return { data: undefined, error: normalizeError(err) };
         }
     }
 
-    static sync(callback) {
+    static sync(fn) {
         try {
-            const data = callback();
+            const data = fn();
             return { data, error: undefined };
-        }
-        catch (error) {
-            if (typeof error === 'string') {
-                error = { message: error }
-            }
-
-            if (!error || !error.message) {
-                error = { message: 'no error message' }
-            }
-
-            return { data: undefined, error: error };
+        } catch (err) {
+            return { data: undefined, error: normalizeError(err) };
         }
     }
 }
