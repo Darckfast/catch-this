@@ -35,13 +35,6 @@ class catchThis {
             return { data, error: undefined };
         }
         catch (err) {
-            if (!(err instanceof Error)) {
-                if (err instanceof Object) {
-                    err = JSON.stringify(err)
-                }
-                err = new Error(err || 'no error message')
-            }
-
             return { data: undefined, error: normalizeError(err) };
         }
     }
