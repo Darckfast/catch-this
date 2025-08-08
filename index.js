@@ -23,8 +23,7 @@ class catchThis {
         try {
             const data = await fn;
             return { data, error: undefined };
-        }
-        catch (err) {
+        } catch (err) {
             return { data: undefined, error: normalizeError(err) };
         }
     }
@@ -33,8 +32,7 @@ class catchThis {
         try {
             const data = fn();
             return { data, error: undefined };
-        }
-        catch (err) {
+        } catch (err) {
             return { data: undefined, error: normalizeError(err) };
         }
     }
