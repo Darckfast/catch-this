@@ -7,39 +7,32 @@ class catchThis {
         return catchThis.sync(fn)
     }
 
-    static async async(promise) {
+    static async async(fn) {
         try {
-            const data = await promise;
+            const data = await fn;
             return { data, error: undefined };
         }
-        catch (error) {
-            if (typeof error === 'string') {
-                error = { message: error }
+        catch (err) {
+            if (!(err instanceof Error)) {
+                err = new Error(err)
             }
 
-            if (!error || !error.message) {
-                error = { message: 'no error message' }
-            }
 
-            return { data: undefined, error: error };
+            return { data: undefined, error: err };
         }
     }
 
-    static sync(callback) {
+    static sync(fn) {
         try {
-            const data = callback();
+            const data = fn();
             return { data, error: undefined };
         }
-        catch (error) {
-            if (typeof error === 'string') {
-                error = { message: error }
+        catch (err) {
+            if (!(err instanceof Error)) {
+                err = new Error(err)
             }
 
-            if (!error || !error.message) {
-                error = { message: 'no error message' }
-            }
-
-            return { data: undefined, error: error };
+            return { data: undefined, error: err };
         }
     }
 }
