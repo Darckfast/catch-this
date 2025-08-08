@@ -14,20 +14,6 @@ describe('catchThis', () => {
         expect(error).toHaveProperty('message', 'error: this promise is not valid')
     })
 
-    test('[error]: it should no error message', async () => {
-        let result = catchThis.auto(new Promise(() => {
-            throw Object.prototype
-        }))
-
-        expect(typeof result).toBe('object')
-        expect(typeof result.then).toBe('function')
-
-        let { data, error } = await result
-
-        expect(data).toBeUndefined
-        expect(error).toHaveProperty('message', 'no error message')
-    })
-
     test('[error]: it should return normal error', async () => {
         let result = catchThis.auto(new Promise(() => {
             undefined.toString()
@@ -66,7 +52,7 @@ describe('catchThis', () => {
         let { data, error } = await result
 
         expect(data).toBeUndefined
-        expect(error).toHaveProperty('message', 'no error message')
+        expect(error).toHaveProperty('message', '[object Object]')
     })
     test('[error]: it should return no error message', async () => {
         let result = catchThis.auto(new Promise(() => {

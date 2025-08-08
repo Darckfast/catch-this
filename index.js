@@ -14,7 +14,7 @@ class catchThis {
         }
         catch (err) {
             if (!(err instanceof Error)) {
-                err = new Error(err)
+                err = new Error(err || 'no error message')
             }
 
 
@@ -29,7 +29,7 @@ class catchThis {
         }
         catch (err) {
             if (!(err instanceof Error)) {
-                err = new Error(err)
+                err = new Error(err || 'no error message')
             }
 
             return { data: undefined, error: err };
