@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: 22
       - run: pnpm i
-      - run: pnpm test
+      - run: pnpm test:ci
