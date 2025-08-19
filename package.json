@@ -1,11 +1,13 @@
 {
+    "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/refs/heads/master/src/schemas/json/package.json",
     "name": "catch-this",
     "version": "0.0.3",
     "description": "Catch this, but do not throw it",
     "main": "index.js",
     "scripts": {
         "test": "vitest",
-        "test:ci": "vitest run"
+        "test:ci": "vitest run",
+        "prepublishOnly": "tsc && rm index.ts"
     },
     "keywords": [],
     "files": [
@@ -19,6 +21,7 @@
     "license": "MIT",
     "packageManager": "pnpm@10.14.0",
     "devDependencies": {
+        "@types/node": "^24.3.0",
         "vitest": "^3.2.4"
     }
 }
