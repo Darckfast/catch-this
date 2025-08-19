@@ -4,6 +4,7 @@
     "version": "0.0.3",
     "description": "Catch this, but do not throw it",
     "main": "index.js",
+    "types": "index.d.ts",
     "scripts": {
         "test": "vitest",
         "test:ci": "vitest run",

@@ -1,5 +1,3 @@
-import { defaultMaxListeners } from "events"
-
 type Result<T> = TError | TSuccess<T>
 
 type TError = {
