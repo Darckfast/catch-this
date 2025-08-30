@@ -32,8 +32,7 @@ class catchThis {
 
     static async async<T>(fn: Promise<T>): Promise<Result<T>> {
         try {
-            const data = await fn;
-            return { data, error: undefined };
+            return { data: await fn, error: undefined };
         } catch (err) {
             return { data: undefined, error: normalizeError(err) };
         }
@@ -41,8 +40,7 @@ class catchThis {
 
     static sync<T>(fn: () => T): Result<T> {
         try {
-            const data = fn();
-            return { data, error: undefined };
+            return { data: fn(), error: undefined };
         } catch (err) {
             return { data: undefined, error: normalizeError(err) };
         }
