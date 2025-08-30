@@ -12,7 +12,8 @@
     },
     "keywords": [],
     "files": [
-        "index.js"
+        "index.js",
+        "index.d.ts"
     ],
     "author": "darckfast",
     "repository": {
