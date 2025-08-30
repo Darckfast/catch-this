@@ -9,7 +9,7 @@
 
 Lightweight and pure `javascript` library that returns normalized errors as values instead of throwing them
 
-> Heavily inspired by [Theo's preferred way of handling try/catch in typescript](https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b) and [this comment](https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b?permalink_comment_id=5526166#gistcomment-5526166) {@html e.parse(peepoLove)} with some added normalization, because `throw undefined` is a thing
+> Heavily inspired by [Theo's preferred way of handling try/catch in typescript](https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b) and [this comment](https://gist.github.com/t3dotgg/a486c4ae66d32bf17c09c73609dacc5b?permalink_comment_id=5526166#gistcomment-5526166) ♥️with some added normalization, because `throw undefined` is a thing
 
 ---
 
