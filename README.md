@@ -13,4 +13,4 @@ Lightweight and pure `javascript` library that returns normalized errors as valu
 
 ---
 
-📜 [Check the documentation for more details](https://darckfast.com/docs/catchThis)
+[📜 Check the documentation for more details](https://darckfast.com/docs/catchThis)
